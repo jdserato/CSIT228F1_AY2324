@@ -37,7 +37,7 @@ public class NamedRunnable implements Runnable{
         Main.thr_ctr++;
     }
 
-    public synchronized void addTotal() {
+    public static synchronized void addTotal() {
         Main.total_primes++;
     }
 }
