@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class BingoGame implements Runnable{
     List<BingoCard> cards;
+    static boolean[] result;
     @Override
     public void run() {
         Scanner sc = new Scanner(System.in);
@@ -19,7 +20,7 @@ public class BingoGame implements Runnable{
             System.out.println("Card " + card.id);
             System.out.println(card);
         }
-
+        // TODO RANDOM RESULTS
         // TODO randomly get number from 1-75 while not bingo
     }
 }
