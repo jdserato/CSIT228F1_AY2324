@@ -19,5 +19,7 @@ public class BingoGame implements Runnable{
             System.out.println("Card " + card.id);
             System.out.println(card);
         }
+
+        // TODO randomly get number from 1-75 while not bingo
     }
 }
