@@ -20,6 +20,13 @@ public class BingoGame implements Runnable{
             System.out.println("Card " + card.id);
             System.out.println(card);
         }
+        // TODO create your checker threads per card
+        Thread[] checkerThrds = new Thread[cnt];
+        for (int i = 0; i < cnt; i++) {
+            checkerThrds[i] = new Thread(new BingoRowChecker(cards.get(i), 3));
+        }
+        // TODO start all threads
+
         // TODO RANDOM RESULTS
         // TODO randomly get number from 1-75 while not bingo
     }

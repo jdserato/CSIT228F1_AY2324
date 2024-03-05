@@ -12,8 +12,14 @@ public class BingoRowChecker extends BingoChecker{
         for (int col = 0; col < 5; col++) {
             int num = card.nums[row][col];
             while (/* wala pa napilian si num*/) {
-                BingoGame.result.wait();
+                try {
+                    synchronized (BingoGame.result) {
+                        BingoGame.result.wait();
+                    }
+                } catch (InterruptedException e) {
+                }
             }
         }
+        System.out.println("Card " +card.id +" done:" +card);
     }
 }
