@@ -1,15 +1,15 @@
 package Bingo;
 
-public class BingoRowChecker extends BingoChecker{
-    int row;
-    public BingoRowChecker(BingoCard card, int row) {
+public class BingoColumnChecker extends BingoChecker{
+    int col;
+    public BingoColumnChecker(BingoCard card, int col) {
         super(card);
-        this.row = row-1;
+        this.col = col-1;
     }
 
     @Override
     public void run() {
-        for (int col = 0; col < 5; col++) {
+        for (int row = 0; row < 5; row++) {
             int num = card.nums[row][col];
             while (!BingoGame.result[num]) {
                 System.out.println("Card " + card.id + ": Waiting for " + num);
@@ -23,6 +23,6 @@ public class BingoRowChecker extends BingoChecker{
                 }
             }
         }
-        System.out.println("Card " +card.id +" done with row "+ (row+1));
+        System.out.println("Card " +card.id +" done with col "+ (col+1));
     }
 }

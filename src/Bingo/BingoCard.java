@@ -1,18 +1,30 @@
 package Bingo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class BingoCard {
     int[][] nums;
+    List<Integer> my_numbers;
     int id;
 
     public BingoCard(int id) {
         this.id = id;
         nums = new int[5][5];
-        // TODO randomize the nums
-        // Col 1: 1-15
-        // Col 2: 16-30
-        // Col 3: 31-45 (middle is 0)
-        // Col 4: 46-60
-        // Col 5: 61-75
+        my_numbers = new ArrayList<>();
+        Random r = new Random();
+        for (int col = 0; col < 5; col++) {
+            for (int row = 0; row < 5; row++) { // 16-30
+                int rand;
+                do {
+                    rand = 15*col + r.nextInt(15)+1;
+                } while (my_numbers.contains(rand));
+                nums[row][col] = rand;
+                my_numbers.add(rand);
+            }
+        }
+        nums[2][2] = 0;
     }
 
     @Override
