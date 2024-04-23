@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BingoGame implements Runnable{
     List<BingoCard> cards;
-    static Boolean[] result;
+    static final Boolean[] result = new Boolean[76];
     static boolean bingo;
     @Override
     public void run() {
@@ -22,7 +22,6 @@ public class BingoGame implements Runnable{
             System.out.println("Card " + card.id);
             System.out.println(card);
         }
-        result = new Boolean[76];
         for (int i = 1;i<76; i++) {
             result[i] = Boolean.FALSE;
         }
@@ -30,7 +29,7 @@ public class BingoGame implements Runnable{
         // TODO create your checker threads per card
         Thread[] checkerThrds = new Thread[cnt];
         for (int i = 0; i < cnt; i++) {
-            checkerThrds[i] = new Thread(new BingoPatternPlus(cards.get(i)));
+            checkerThrds[i] = new Thread(new BingoPatternHash(cards.get(i)));
         }
         // TODO start all threads
         for (Thread t : checkerThrds) {

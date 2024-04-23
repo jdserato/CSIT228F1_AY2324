@@ -11,17 +11,7 @@ public class BingoColumnChecker extends BingoChecker{
     public void run() {
         for (int row = 0; row < 5; row++) {
             int num = card.nums[row][col];
-            while (!BingoGame.result[num]) {
-                System.out.println("Card " + card.id + ": Waiting for " + num);
-                try {
-                    synchronized (BingoGame.result) {
-                        BingoGame.result.wait();
-                    }
-                } catch (InterruptedException e) {
-                    System.out.println("Card " + card.id + " loses while doing stuff");
-                    return;
-                }
-            }
+            waitForMe(num);
         }
         System.out.println("Card " +card.id +" done with col "+ (col+1));
     }
